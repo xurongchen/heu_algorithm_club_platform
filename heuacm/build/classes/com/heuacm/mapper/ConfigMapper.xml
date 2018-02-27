@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.ConfigMapper">
+        <insert id="add" parameterType="Config" >
+            insert into config (configkey,configval)
+ 			values (#{configkey},#{configval})
+        </insert>
+         
+        <delete id="delete" parameterType="String" >
+            delete from config where configkey= #{configkey}   
+        </delete>
+                 
+         <select id="get" parameterType="String" resultType="Config">
+            select * from config where configkey= #{configkey}   
+        </select>
+ 		 		
+        <update id="update" parameterType="Config" >
+            update config set configval=#{configval} where configkey= #{configkey}   
+        </update>
+
+
+    </mapper>

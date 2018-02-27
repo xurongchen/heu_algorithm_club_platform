@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.AnnexMapper">
+        <insert id="add" parameterType="Annex" >
+            insert into annex (courseid,filename)
+ 			values (#{courseid},#{filename})   
+        </insert>
+         
+        <delete id="delete" parameterType="Annex" >
+            delete from annex where id= #{id}   
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Annex">
+            select * from annex where id= #{id}    
+        </select>
+ 		 		
+        <update id="update" parameterType="Annex" >
+            update annex set courseid=#{courseid},filename=#{filename} where id=#{id}    
+        </update>
+        <select id="listbycourseid" resultType="Annex">
+            select * from annex where courseid=#{courseid}
+        </select>
+
+    </mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.OrderInfoMapper">
+        <insert id="add" parameterType="OrderInfo" >
+            insert into orderinfo (ordernum,checked)
+ 			values (#{ordernum},#{checked})
+        </insert>
+         
+        <delete id="delete" parameterType="String" >
+            delete from orderinfo where ordernum= #{ordernum}   
+        </delete>
+                 
+         <select id="get" parameterType="String" resultType="OrderInfo">
+            select * from orderinfo where ordernum= #{ordernum}   
+        </select>
+ 		 		
+        <update id="update" parameterType="OrderInfo" >
+            update orderinfo set checked=#{checked} where ordernum= #{ordernum}   
+        </update>
+
+
+    </mapper>

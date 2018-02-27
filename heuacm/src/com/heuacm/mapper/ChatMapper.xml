@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.ChatMapper">
+        <insert id="add" parameterType="Chat" >
+            insert into chat (title,content,vote,userid,visible,dt)
+ 			values (#{title},#{content},#{vote},#{userid},#{visible},#{dt})   
+        </insert>
+         
+        <delete id="delete" parameterType="Chat" >
+            delete from chat where id= #{id}   
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Chat">
+            select * from chat where id= #{id}    
+        </select>
+ 		 		
+        <update id="update" parameterType="Chat" >
+            update chat set title=#{title},content=#{content},vote=#{vote},
+            userid=#{userid},visible=#{visible},dt=#{dt} where id=#{id}    
+        </update>
+        
+        <select id="listAll" resultType="Chat">
+            select * from chat
+        </select>
+        
+        <select id="listVisible" resultType="Chat">
+        select * from chat where visible=true     
+        </select>
+    </mapper>

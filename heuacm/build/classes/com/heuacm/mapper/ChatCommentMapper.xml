@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.ChatCommentMapper">
+        <insert id="add" parameterType="ChatComment" >
+            insert into chatcomment (chatanswerid,content,userid,visible,dt)
+ 			values (#{chatanswerid},#{content},#{userid},#{visible},#{dt})   
+        </insert>
+         
+        <delete id="delete" parameterType="ChatComment" >
+            delete from chatcomment where id= #{id}   
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="ChatComment">
+            select * from chatcomment where id= #{id}    
+        </select>
+ 		 		
+        <update id="update" parameterType="ChatComment" >
+            update chatcomment set chatanswerid=#{chatanswerid},content=#{content},
+            userid=#{userid},visible=#{visible},dt=#{dt} where id=#{id}    
+        </update>
+        
+        <select id="listAll" parameterType="_int" resultType="ChatComment">
+            select * from chatcomment where chatanswerid=#{chatanswerid}
+        </select>
+        
+        <select id="listVisible" parameterType="_int" resultType="ChatComment">
+        select * from chatcomment where chatanswerid=#{chatanswerid} and visible=true
+        </select>
+    </mapper>

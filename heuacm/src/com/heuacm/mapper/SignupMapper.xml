@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.SignupMapper">
+        <insert id="add" parameterType="Signup" >
+            insert into signup (courseid,userid)
+ 			values (#{courseid},#{userid})   
+        </insert>
+
+        <select id="get" resultType="Signup">
+            select * from signup where courseid=#{courseid} and userid=#{userid}
+        </select>
+        
+        <select id="getbycourseid" resultType="Signup">
+            select * from signup where courseid=#{courseid}
+        </select>
+        
+        <delete id="delete" parameterType="Signup">
+            delete from signup where courseid=#{courseid} and userid=#{userid}
+        </delete>
+    </mapper>

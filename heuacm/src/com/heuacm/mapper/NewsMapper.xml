@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.NewsMapper">
+        <insert id="add" parameterType="News" >
+            insert into news (title,content,visit,userid,auth,visible,top,dt)
+ 			values (#{title},#{content},#{visit},#{userid},#{auth},#{visible},#{top},#{dt})   
+        </insert>
+         
+        <delete id="delete" parameterType="News" >
+            delete from news where id= #{id}   
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="News">
+            select * from news where id= #{id}    
+        </select>
+ 		 		
+        <update id="update" parameterType="News" >
+            update news set title=#{title},content=#{content},visit=#{visit},userid=#{userid},
+            auth=#{auth},visible=#{visible},top=#{top},dt=#{dt} where id=#{id}    
+        </update>
+        <select id="list" resultType="News">
+            select * from news
+        </select>
+        <select id="listcan" parameterType="_int" resultType="News">
+        select * from news where (news.auth<![CDATA[&]]> #{auth})=news.auth      
+        </select>
+    </mapper>

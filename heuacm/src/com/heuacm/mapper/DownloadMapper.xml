@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+    <mapper namespace="com.heuacm.mapper.DownloadMapper">
+        <insert id="add" parameterType="Download" >
+            insert into download (title,filename,userid,visible,dt)
+ 			values (#{title},#{filename},#{userid},#{visible},#{dt})   
+        </insert>
+         
+        <delete id="delete" parameterType="_int">
+            delete from download where id= #{id}   
+        </delete>
+         
+        <select id="get" parameterType="_int" resultType="Download">
+            select * from download where id= #{id}    
+        </select>
+        
+         <select id="getByFilename" parameterType="String" resultType="Download">
+            select * from download where filename= #{filename}    
+        </select>
+ 		 		
+        <update id="update" parameterType="Download" >
+            update download set title=#{title},filename=#{filename},userid=#{userid}
+            ,visible=#{visible},dt=#{dt} where id=#{id}    
+        </update>
+        <select id="listall" resultType="Download">
+            select * from download
+        </select>
+
+    </mapper>
